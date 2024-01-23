@@ -19,8 +19,8 @@ int	nlen(int nbr)
 		n++;
 	while (nbr != 0)
 	{
-		nbr = nbr / 10;
 		n++;
+		nbr = nbr / 10;
 	}
 	return (n);
 	
@@ -30,10 +30,10 @@ char *ft_itoa(int nbr)
 {
 	char *digits = "0123456789";
 	int	len = nlen(nbr);
-	int	i = 0;
 	char *str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
+	str[0] = '\0';
 	if (nbr < 0)
 	{
 		str[0] = '-';
@@ -42,22 +42,21 @@ char *ft_itoa(int nbr)
 	{
 		str[0] = '0';
 	}
-	while (len >= 0)
+	while (nbr != 0)
 	{
 		if (nbr > 0)
-			str[len--] = digits[nbr % 10];
+			str[--len] = digits[nbr % 10];
 		else
-			str[len--] = digits[(nbr % 10) * -1];
+			str[--len] = digits[(nbr % 10) * -1];
 		nbr = nbr / 10;
 	}
-	str[i] = '\0';
 	return (str);
 }
-#include <stdio.h>
-int	main(void)
-{
-	int prueba = 1234;
-	char *str = ft_itoa(prueba);
-	printf("%d, %s", prueba, str);
-	return(0);
-}
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	int prueba = 1234;
+// 	char *str = ft_itoa(prueba);
+// 	printf("%d, %s", prueba, str);
+// 	return(0);
+// }
