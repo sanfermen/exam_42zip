@@ -10,7 +10,7 @@
 // Example:
 // $> ./last_word "FOR PONY" | cat -e
 // PONY$
-// $> ./last_word "this        ...       is sparta, then again, maybe    not" | cat -e
+// $> ./last_word 
 // not$
 // $> ./last_word "   " | cat -e
 // $
