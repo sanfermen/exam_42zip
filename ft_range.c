@@ -17,13 +17,13 @@
 
 int	*ft_range(int start, int end)
 {
-	int	i = 0;
-	int len = abs(end - start) + 1;
-	int *numbers = (int *)malloc(sizeof(int) * len);
-
+	long	i;
+	long len;
+	int *numbers;
+	numbers = (int *)malloc(sizeof(int) * len);
 	if (!numbers)
 		return (NULL);
-	
+	len = abs(end - start) + 1;
 	while (i < len)
 	{
 		if (start <= end)
@@ -31,7 +31,6 @@ int	*ft_range(int start, int end)
 		else
 			numbers[i++] = start--;
 	}
-	numbers[i] = '\0';
 	return (numbers);
 }
 
