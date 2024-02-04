@@ -21,7 +21,10 @@ int	*ft_rrange(int start, int end)
 	long	i = 0;
 	int *numbers;
 
-	len = abs(end - start) + 1;
+	if (end > start)
+		len = (long)end - (long)start + 1;
+	if (start > end)
+		len = (long)start - (long)end + 1;
 	numbers = (int *)malloc(sizeof(int) * len);
 	if (!numbers)
 		return (NULL);
@@ -35,15 +38,15 @@ int	*ft_rrange(int start, int end)
 	return (numbers);
 }
 
-// #include <stdio.h>
-// int	main(void)
-// {
-// 	int start = -2;
-// 	int end = 2;
-// 	int *prueba = ft_rrange(start, end);
-// 	int i = 0;
+#include <stdio.h>
+int	main(void)
+{
+	int start = -2147483648;
+	int end = 2147483647;
+	int *prueba = ft_rrange(start, end);
+	int i = 0;
 
-// 	while (i < 5)
-// 		printf("%d |", prueba[i++]);
-// 	return (0);
-// }
+	while (i < 3)
+		printf("%d |", prueba[i++]);
+	return (0);
+}

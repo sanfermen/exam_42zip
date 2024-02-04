@@ -33,7 +33,9 @@ char *ft_itoa(int nbr)
 	char *str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	str[0] = '\0';
+	if (nbr = -2147483648)
+		return ("-2147483648\0");
+	str[len] = '\0';
 	if (nbr < 0)
 	{
 		str[0] = '-';
