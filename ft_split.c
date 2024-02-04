@@ -11,31 +11,93 @@
 
 #include <stdlib.h>
 
-char	**ft_split(char *str)
+char *ft_strncopy(char *s1, char *s2, int n)
 {
-	int	i = 0;
-	int k = 0;
-	int j;
-	char **split = (char **)malloc(sizeof(char *) * 256);
+	int i = -1;
+	while (++i < n && s2[i])
+		s1[i] = s2[i];
+	s1[i] = '\0';
+	return (s1);
+}
 
-	if (!split)
+int is_space(char ch)
+{
+	return(ch == ' ' || ch == '\t' || ch == '\n');
+}
+
+int ft_strlen(char *str)
+{
+	int n = 0;
+	while(str[n])
+		n++;
+	return(n);
+}
+
+char *ft_strdup(char *str)
+{
+	int len;
+	char *s = NULL;
+	int i = 0;
+
+	if (!str)
 		return (NULL);
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-		i++;
+	len = ft_strlen(str);
+	s = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s)
+		return (NULL);
 	while (str[i])
 	{
-		if (!(split[k] = (char *)malloc(sizeof(char) * 4096)))
-			return (NULL);
-		j = 0;
-		while(str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
-			split[k][j++] = str[i++];
-		while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+		s[i] = str[i];
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
+}
+
+int number_words(char *str)
+{
+	int i = 0;
+	int number = 0;
+
+	while (str[i])
+	{
+		while (str[i] && is_space(str[i]))
 			i++;
-		split[k][j] = '\0';
-		k++;
+		if (str[i])
+			number++;
+		while (str[i] && !is_space(str[i]))
+			i++;
+	}
+	return (number);
+}
+
+char	**ft_split(char *str)
+{
+	if (!str)
+		return (NULL);
+	int i = 0;
+	int k = 0;
+	int initword;
+	int n_words = number_words(str);
+	char **split;
+	split = (char **)malloc(sizeof(char *) * (n_words + 1));
+	if (!split)
+		return (NULL);
+	while (str[i])
+	{
+		while (str[i] && is_space(str[i]))
+			i++;
+		initword = i;
+		while (str[i] && !is_space(str[i]))
+			i++;
+		if (initword < i)
+		{
+			split[k] = (char *)malloc(sizeof(char) * ((i - initword) + 1));
+			ft_strncopy(split[k++], &str[initword], i - initword);
+		}
 	}
 	split[k] = NULL;
-	return (split);
+	return(split);
 }
 
 //  #include <stdio.h>
@@ -44,7 +106,7 @@ char	**ft_split(char *str)
 // 	char **frase = ft_split("hola que tal");
 // 	int i = 0;
 
-// 	while (i < 3)
+// 	while (frase[i])
 // 	{
 // 		printf("string %d: %s\n", i, frase[i]);
 // 		i++;
