@@ -35,7 +35,6 @@ int	*ft_rrange(int start, int end)
 		else
 			numbers[i++] = end++;
 	}
-	numbers[len] = '\0';
 	return (numbers);
 }
 
