@@ -25,35 +25,6 @@ int is_space(char ch)
 	return(ch == ' ' || ch == '\t' || ch == '\n');
 }
 
-int ft_strlen(char *str)
-{
-	int n = 0;
-	while(str[n])
-		n++;
-	return(n);
-}
-
-char *ft_strdup(char *str)
-{
-	int len;
-	char *s = NULL;
-	int i = 0;
-
-	if (!str)
-		return (NULL);
-	len = ft_strlen(str);
-	s = (char *)malloc(sizeof(char) * (len + 1));
-	if (!s)
-		return (NULL);
-	while (str[i])
-	{
-		s[i] = str[i];
-		i++;
-	}
-	s[i] = '\0';
-	return (s);
-}
-
 int number_words(char *str)
 {
 	int i = 0;

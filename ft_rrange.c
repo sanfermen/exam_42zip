@@ -35,18 +35,19 @@ int	*ft_rrange(int start, int end)
 		else
 			numbers[i++] = end++;
 	}
+	numbers[len] = '\0';
 	return (numbers);
 }
 
-#include <stdio.h>
-int	main(void)
-{
-	int start = -2147483648;
-	int end = 2147483647;
-	int *prueba = ft_rrange(start, end);
-	int i = 0;
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	int start = -2147483648;
+// 	int end = 2147483647;
+// 	int *prueba = ft_rrange(start, end);
+// 	int i = 0;
 
-	while (i < 3)
-		printf("%d |", prueba[i++]);
-	return (0);
-}
+// 	while (i < 3)
+// 		printf("%d |", prueba[i++]);
+// 	return (0);
+// }

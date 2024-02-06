@@ -33,12 +33,13 @@ char *ft_itoa(int nbr)
 	char *str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	if (nbr = -2147483648)
+	if (nbr == -2147483648)
 		return ("-2147483648\0");
 	str[len] = '\0';
 	if (nbr < 0)
 	{
 		str[0] = '-';
+		nbr = nbr * -1;
 	}
 	if (nbr == 0)
 	{
@@ -46,10 +47,7 @@ char *ft_itoa(int nbr)
 	}
 	while (nbr != 0)
 	{
-		if (nbr > 0)
-			str[--len] = digits[nbr % 10];
-		else
-			str[--len] = digits[(nbr % 10) * -1];
+		str[--len] = digits[nbr % 10];
 		nbr = nbr / 10;
 	}
 	return (str);
@@ -57,8 +55,8 @@ char *ft_itoa(int nbr)
 // #include <stdio.h>
 // int	main(void)
 // {
-// 	int prueba = 1234;
+// 	int prueba = -2147483648;
 // 	char *str = ft_itoa(prueba);
-// 	printf("%d, %s", prueba, str);
+// 	printf("%s", str);
 // 	return(0);
 // }

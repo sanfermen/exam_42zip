@@ -38,6 +38,7 @@ int	*ft_range(int start, int end)
 		else
 			numbers[i++] = start--;
 	}
+	numbers[i] = '\0';
 	return (numbers);
 }
 

@@ -10,7 +10,7 @@
 // Example:
 // $> ./last_word "FOR PONY" | cat -e
 // PONY$
-// $> ./last_word 
+// $> ./last_word "this        ...       is sparta, then again, maybe    not" | cat -e
 // not$
 // $> ./last_word "   " | cat -e
 // $
@@ -36,12 +36,12 @@ void last_word(char *str)
 		write(1, &str[j++], 1);
 }
 
-int main(int argc, char **argv)
-{
-	if (argc == 2)
-	{
-		last_word(argv[1]);
-	}
-	write(1, "\n", 1);
-	return (0);
-}
+// int main(int argc, char **argv)
+// {
+// 	if (argc == 2)
+// 	{
+// 		last_word(argv[1]);
+// 	}
+// 	write(1, "\n", 1);
+// 	return (0);
+// }
